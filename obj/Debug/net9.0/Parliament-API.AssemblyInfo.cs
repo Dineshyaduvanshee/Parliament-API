@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Parliament-API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f6bf5b118e846433c59925b8748f76c99e8cec5e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cd01f2d3702e815ee61877a31352a181496d44b6")]
 [assembly: System.Reflection.AssemblyProductAttribute("Parliament-API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Parliament-API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

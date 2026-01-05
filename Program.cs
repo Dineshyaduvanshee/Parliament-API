@@ -94,6 +94,9 @@ app.UseAuthorization();
 
 app.MapControllers();
 //app.Urls.Add("http://0.0.0.0:5224");
+// Use Render's PORT environment variable or fallback to 5224 locally
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5224";
+app.Urls.Add($"http://0.0.0.0:{port}");
 
 app.MapGet("/", context =>
 {

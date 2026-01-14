@@ -56,5 +56,25 @@ namespace Parliament_API.Controllers
         {
             return Ok(_context.Videos.ToList());
         }
+        // ✅ Delete Video
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteVideo(int id)
+        {
+            var video = await _context.Videos.FindAsync(id);
+            if (video == null)
+                return NotFound();
+
+            // Delete file from server
+            var filePath = Path.Combine(_env.WebRootPath ?? "wwwroot", video.FilePath);
+            if (System.IO.File.Exists(filePath))
+                System.IO.File.Delete(filePath);
+
+            // Remove from database
+            _context.Videos.Remove(video);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Video deleted successfully" });
+        }
+
     }
 }

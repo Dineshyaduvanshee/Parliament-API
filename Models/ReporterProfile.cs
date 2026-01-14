@@ -7,13 +7,13 @@ namespace Parliament_API.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Name is required")]
         [StringLength(100)]
-        public string Name { get; set; } = null!;
+        public string Name { get; set; } = string.Empty;
 
-        [Required]
+        [Required(ErrorMessage = "Media House is required")]
         [StringLength(100)]
-        public string MediaHouse { get; set; } = null!;
+        public string MediaHouse { get; set; } = string.Empty;
 
         [StringLength(100)]
         public string? Beat { get; set; }
@@ -31,18 +31,17 @@ namespace Parliament_API.Models
         [StringLength(150)]
         public string? Email { get; set; }
 
-        [Phone]
         [StringLength(20)]
         public string? Phone { get; set; }
 
-        [Url]
-        [StringLength(200)]
+        // ⚠️ URL validation removed (frontend already validates)
+        [StringLength(300)]
         public string? Website { get; set; }
 
-        [StringLength(300)]
+      
         public string? PhotoUrl { get; set; }
 
-        // 🔹 Optional Future Fields
+
         [StringLength(100)]
         public string? Designation { get; set; }
 

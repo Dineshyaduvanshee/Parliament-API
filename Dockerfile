@@ -1,20 +1,27 @@
-# Use official .NET 9 SDK for building
-FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
-WORKDIR /src
+﻿# =========================
+# Build stage
+# =========================
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /app
 
-# Copy csproj and restore
+# Copy project file and restore
 COPY *.csproj ./
 RUN dotnet restore
 
-# Copy everything else and publish
-COPY . ./
-RUN dotnet publish -c Release -o /app
+# Copy all files and publish
+COPY . .
+RUN dotnet publish -c Release -o out
 
-# Runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:9.0
+# =========================
+# Runtime stage
+# =========================
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
-COPY --from=build /app .
 
-# Expose port 5224 (match your API)
-EXPOSE 5224
-ENTRYPOINT ["dotnet", "Parliament-API.dll"]
+COPY --from=build /app/out .
+
+# 🔥 IMPORTANT FOR RENDER
+ENV ASPNETCORE_URLS=http://+:8080
+EXPOSE 8080
+
+ENTRYPOINT ["dotnet", "Parliament_API.dll"]

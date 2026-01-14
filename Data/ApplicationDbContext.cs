@@ -16,7 +16,13 @@ namespace Parliament_API.Data
         public DbSet<CriminalProfile> CriminalProfiles { get; set; }
         public DbSet<Fir> Firs { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Candidate> Candidates { get; set; } = null!;
+        public DbSet<Vote> Votes { get; set; } = null!;
         public DbSet<Payment> Payments { get; set; }
+        public DbSet<Patient> Patients { get; set; }
+        public DbSet<Doctor> Doctors { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<HelpSupport> HelpSupports { get; set; }
 
 
     }
